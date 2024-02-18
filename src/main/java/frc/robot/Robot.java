@@ -8,6 +8,7 @@ import javax.sound.sampled.Port;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.motorcontrol.Spark;
 
 /**
@@ -29,6 +30,8 @@ private Spark rightmotor2 = new Spark(3);
 
 private Joystick joy1 = new Joystick(0);
 
+private double startTime; 
+
 
 @Override
   public void robotInit() {}
@@ -37,11 +40,25 @@ private Joystick joy1 = new Joystick(0);
   public void robotPeriodic() {}
 
   @Override
-  public void autonomousInit() {}
+  public void autonomousInit() {
+    startTime= Timer.getFPGATimestamp()
+  }
 
   @Override
-  public void autonomousPeriodic() {}
-
+  public void autonomousPeriodic() {
+    double time = Timer.getFPGATimestamp();
+    if (time - startTime > 3) {
+    leftmotor1.set(0.6);
+    leftmotor2.set(0.6);
+    rightmotor1.set(-0.6);
+    rightmotor2.set(-0.6);
+  } else {
+    leftmotor1.set(0);
+    leftmotor2.set(0);
+    rightmotor1.set(0);
+    rightmotor2.set(0);
+  }
+}
   @Override
   public void teleopInit() {}
 
