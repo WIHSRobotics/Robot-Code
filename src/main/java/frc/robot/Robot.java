@@ -18,6 +18,7 @@ import edu.wpi.first.wpilibj.motorcontrol.Spark;
  * project.
  */
 public class Robot extends TimedRobot {
+
   /**
    * This function is run when the robot is first started up and should be used for any
    * initialization code.
@@ -41,7 +42,7 @@ private double startTime;
 
   @Override
   public void autonomousInit() {
-    startTime= Timer.getFPGATimestamp()
+    startTime= Timer.getFPGATimestamp();
   }
 
   @Override
